@@ -1,17 +1,10 @@
-<div class="container-fluid text-center pb-5">
-  <div style="text-align:center">
-    <h1>
-      {{platform}}
-    </h1>    
-  </div>
-</div>
-
 <table class="table games-list-table centered">
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
       <th scope="col">Title</th>
       <th scope="col">Platform</th>
+      <th scope="col">Release Date</th>
       <th scope="col">Release Date</th>
     </tr>
   </thead>
@@ -21,6 +14,7 @@
       <td>{{game.title}}</td>
       <td>{{game.platform}}</td>
       <td>{{game.releasedate}}</td>
+      <td><button type="button" class="btn btn-primary btn-sm" (click)="this.viewGameDetail()">View</button></td>
     </tr>
   </tbody>
 </table>

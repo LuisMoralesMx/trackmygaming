@@ -5,8 +5,16 @@ body {
   padding-top: 5rem;
 }
 
-.games-list-table {
+table.games-list-table {
   width: 60%;
+}
+
+table.games-list-table tr {
+  background-color: white;
+}
+
+table.games-list-table tr:hover {
+  background-color: lightgray;
 }
 
 .centered {

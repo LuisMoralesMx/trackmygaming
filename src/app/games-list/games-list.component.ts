@@ -25,6 +25,10 @@ export class GamesListComponent implements OnInit {
       {id: 3, title: 'Horizon Zero Dawn', platform: 'PS4', releasedate: 'February 28, 2017'},
       {id: 4, title: 'Uncharted 4: A Thief\'s End', platform: 'PS4', releasedate: 'May 10, 2016'}      
     ];
-
   }
+
+  viewGameDetail() {
+    alert('Not coded yet.');
+  }
+
 }
