@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { GamesListComponent } from './components/games-list/games-list.component';
 import { GamesService } from './services/games.service';
+import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { GamesService } from './services/games.service';
     GamesListComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [GamesService],
   bootstrap: [AppComponent]
