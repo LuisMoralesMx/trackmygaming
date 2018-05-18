@@ -10,6 +10,9 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
+import {AngularFontAwesomeModule } from 'angular-font-awesome';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 import { GamesListComponent } from './components/games-list/games-list.component';
 import { GamesAddComponent } from './components/games-add/games-add.component';
 import { GamesService } from './services/games.service';
@@ -27,6 +30,8 @@ import { GamesService } from './services/games.service';
     AngularFireModule.initializeApp(environment.firebase), // imports firebase/app needed for everything
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireDatabaseModule,
+    AngularFontAwesomeModule,
+    BrowserAnimationsModule,
   ],
   providers: [GamesService],
   bootstrap: [AppComponent]

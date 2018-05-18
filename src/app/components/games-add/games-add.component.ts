@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Game } from '../../models/game.model'
+import { Platform } from '../../models/platform.model'
 import { GamesService } from '../../services/games.service'
 
 @Component({
@@ -9,18 +10,29 @@ import { GamesService } from '../../services/games.service'
 })
 export class GamesAddComponent implements OnInit {
 
+  platform: Platform[];
+  selectedPlatform: Platform;
+  game = new Game("","","","","");  
+
   constructor(
-    private gamesService: GamesService,
+    private gamesService: GamesService,    
+    
   ) { }
 
   ngOnInit() {
+    this.getPlatforms();
   }
-
-  game = new Game("","","","","");
-  platform = new Array("PlayStation", "Nintendo", "Xbox")
 
   addNewGame() {
     return this.gamesService.addNewGame(this.game);
   }
 
+  getPlatforms() {
+    return this.platform = [
+      {name: 'PS4', code: 0},
+      {name: 'Nintendo', code: 1},
+      {name: 'XBOX', code: 2},
+    ];
+  }
 }
+
