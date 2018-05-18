@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Game } from '../../models/game.model';
 import { GamesService } from '../../services/games.service'
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-games-list',
@@ -12,7 +13,7 @@ export class GamesListComponent implements OnInit {
 
   // Declaring component variables
   platform = 'PS4';
-  gamesList: Array<Game>;
+  gamesList: Game[];
 
   constructor(
     private gamesService: GamesService
@@ -23,7 +24,7 @@ export class GamesListComponent implements OnInit {
   }
 
   getGameList() {
-    this.gamesList = this.gamesService.getGameListByUserId();
+    this.gamesService.getGameListByUserId().subscribe(games => this.gamesList = games);
   }
 
   viewGameDetail() {

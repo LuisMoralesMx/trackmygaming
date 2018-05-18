@@ -1,21 +1,19 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { Game } from '../models/game.model';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class GamesService {
+  constructor(private db: AngularFireDatabase) { }
 
-  constructor() { }
+  getGameListByUserId(): Observable<Game[]>{
+    return this.db.list<Game>('/Games/R6vBhRITlaMF6aVDK4oUF3wXHXI3').valueChanges();
+  }
 
-  getGameListByUserId = function()  {
-    
-    let gamesList = [
-      {id: 1, title: 'Last Of Us', platform: 'PS4', releasedate: 'July 29, 2014', status: 'Completed'},
-      {id: 2, title: 'God of War', platform: 'PS4', releasedate: 'April 20, 2018', status: 'In Progress'},
-      {id: 3, title: 'Horizon Zero Dawn', platform: 'PS4', releasedate: 'February 28, 2017', status: 'Completed'},
-      {id: 4, title: 'Uncharted 4: The Lost Legacy', platform: 'PS4', releasedate: 'May 10, 2016', status: 'Completed'}      
-    ];
-
-    return gamesList;
-    
+  addNewGame(game: Game) {
+    return this.db.list('/Games/R6vBhRITlaMF6aVDK4oUF3wXHXI3').push(game);
   }
 }

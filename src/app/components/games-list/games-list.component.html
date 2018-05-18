@@ -1,22 +1,22 @@
 <table class="table games-list-table centered">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">#</th>
       <th scope="col">Title</th>
       <th scope="col">Platform</th>
+      <th scope="col">Publisher</th>
       <th scope="col">Release Date</th>
       <th scope="col">Status</th>
       <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let game of gamesList">
-      <th scope="row">{{game.id}}</th>
-      <td>{{game.title}}</td>
-      <td>{{game.platform}}</td>
-      <td>{{game.releasedate}}</td>
-      <td>{{game.status}}</td>
-      <td><button type="button" class="btn btn-primary btn-sm" (click)="this.viewGameDetail()">View</button></td>
+    <tr *ngFor="let items of gamesList">
+      <th>{{items.title}}</th>
+      <td>{{items.platform}}</td>
+      <td>{{items.publisher}}</td>
+      <td>{{items.releasedate}}</td>
+      <td>{{items.progress}}</td>
+      <td><button type="button" class="btn btn-primary btn-sm" (click)="this.viewGameDetail()">Edit</button></td>
     </tr>
   </tbody>
 </table>

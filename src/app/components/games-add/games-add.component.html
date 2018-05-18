@@ -1,0 +1,34 @@
+<div class="form-container">
+  <form>
+    <!-- Game Title -->
+    <div class="form-group">
+      <label for="titleId">Game</label>
+      <input type="text" class="form-control" id="titleId" placeholder="Type Game" [(ngModel)]="game.title" name="title">
+      <small id="emailHelp" class="form-text text-muted">We will never judge what you actually play.. Well maybe.</small>
+    </div>
+    <!-- Game Platform -->
+    <div class="form-group">
+      <label for="platformId">Platform</label>
+      <input type="text" class="form-control" id="platformId" placeholder="PS4, Xbox, Nintendo.." [(ngModel)]="game.platform" name="platform">
+    </div>
+    <!-- Game Publisher -->
+    <div class="form-group">
+      <label for="publisherId">Publisher</label>
+      <input type="text" class="form-control" id="publisherId" placeholder="EA, Ubisoft, Microsoft Studios.." [(ngModel)]="game.publisher" name="publisher">
+    </div>
+    <!-- Game Release Date -->
+    <div class="form-group">
+      <label for="releasedateId">Release Date</label>
+      <input type="text" class="form-control" id="releasedateId" placeholder="MM/DD/YYYY" [(ngModel)]="game.releasedate" name="releasedate">
+    </div>
+    <!-- Game Progress -->
+    <div class="form-group">
+      <label for="progressId">Progress</label>
+      <input type="text" class="form-control" id="progressId" placeholder="New, In Progress, Completed.." [(ngModel)]="game.progress" name="progress">
+    </div>
+    <!-- Form Action Buttons -->
+    <div class="form-group">
+      <button type="button" class="btn btn-primary btn-sm" (click)="this.addNewGame()">Add Game</button>
+    </div>
+  </form>
+</div>
