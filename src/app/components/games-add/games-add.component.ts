@@ -3,6 +3,7 @@ import { Game } from '../../models/game.model'
 import { Platform } from '../../models/platform.model'
 import { GamesService } from '../../services/games.service'
 import { stringify } from 'querystring';
+import { Status } from '../../models/status.model';
 
 @Component({
   selector: 'app-games-add',
@@ -11,7 +12,8 @@ import { stringify } from 'querystring';
 })
 export class GamesAddComponent implements OnInit {
 
-  platforms: Platform[];
+  platformsOptions: Platform[];
+  statusOptions: Status[];
   game: Game = new Game();  
 
   constructor(
@@ -20,15 +22,20 @@ export class GamesAddComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getPlatforms();
+    this.getPlatformsOptions();
+    this.getStatusOptions();
   }
 
   addNewGame() {
     return this.gamesService.addNewGame(this.game);
   }
 
-  getPlatforms() {
-    return this.platforms = this.gamesService.getPlatformOptions();
+  getPlatformsOptions() {
+    return this.platformsOptions = this.gamesService.getPlatformOptions();
+  }
+
+  getStatusOptions() {
+    return  this.statusOptions = this.gamesService.getStatusOptions();
   }
 }
 

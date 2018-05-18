@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Game } from '../models/game.model';
 import { Platform } from '../models/platform.model'
+import { Status } from '../models/status.model';
 
 @Injectable({
   providedIn: 'root',
@@ -20,13 +21,24 @@ export class GamesService {
 
   getPlatformOptions() {
     type platforms = Array<Platform>
-    const arr: platforms = [
+    const options: platforms = [
       {name: 'PS4', code: 0},
       {name: 'Nintendo', code: 1},
       {name: 'XBOX', code: 2},
       {name: 'PC', code: 2},
     ];
 
-    return arr;
+    return options;
+  }
+
+  getStatusOptions() {
+    type status = Array<Status>
+    const options: status = [
+      {name: 'New', code: 0},
+      {name: 'In Progress', code: 1},
+      {name: 'Completed', code: 2}
+    ];
+
+    return options;
   }
 }

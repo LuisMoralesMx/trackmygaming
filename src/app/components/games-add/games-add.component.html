@@ -10,7 +10,7 @@
     <div class="form-group">
       <mat-form-field>
         <mat-select [(value)]="game.platform" id="platformId" placeholder="Select Platform">
-          <mat-option *ngFor="let platform of platforms" [value]="platform.name">{{platform.name}}</mat-option>
+          <mat-option *ngFor="let platform of platformsOptions" [value]="platform.name">{{platform.name}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
@@ -26,8 +26,11 @@
     </div>
     <!-- Game Status -->
     <div class="form-group">
-      <label for="statusId">Progress</label>
-      <input type="text" class="form-control" id="statusId" placeholder="New, In Progress, Completed.." [(ngModel)]="game.status" name="status">
+      <mat-form-field>
+          <mat-select [(value)]="game.status" id="statusId" placeholder="Select Status">
+            <mat-option *ngFor="let status of statusOptions" [value]="status.name">{{status.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
     </div>
     <!-- Form Action Buttons -->
     <div class="form-group">
