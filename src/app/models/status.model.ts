@@ -1,4 +1,4 @@
-export class Platform {
+export class Status {
     name: string;
     code: number;
 }

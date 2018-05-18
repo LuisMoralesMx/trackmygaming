@@ -8,8 +8,11 @@
     </div>
     <!-- Game Platform -->
     <div class="form-group">
-      <label for="platformId">Platform</label>
-      <input type="text" class="form-control" id="platformId" placeholder="PS4, Xbox, Nintendo.." [(ngModel)]="game.platform" name="platform">
+      <mat-form-field>
+        <mat-select [(value)]="game.platform" id="platformId" placeholder="Select Platform">
+          <mat-option *ngFor="let platform of platforms" [value]="platform.name">{{platform.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
     <!-- Game Publisher -->
     <div class="form-group">
@@ -21,10 +24,10 @@
       <label for="releasedateId">Release Date</label>
       <input type="text" class="form-control" id="releasedateId" placeholder="MM/DD/YYYY" [(ngModel)]="game.releasedate" name="releasedate">
     </div>
-    <!-- Game Progress -->
+    <!-- Game Status -->
     <div class="form-group">
-      <label for="progressId">Progress</label>
-      <input type="text" class="form-control" id="progressId" placeholder="New, In Progress, Completed.." [(ngModel)]="game.progress" name="progress">
+      <label for="statusId">Progress</label>
+      <input type="text" class="form-control" id="statusId" placeholder="New, In Progress, Completed.." [(ngModel)]="game.status" name="status">
     </div>
     <!-- Form Action Buttons -->
     <div class="form-group">

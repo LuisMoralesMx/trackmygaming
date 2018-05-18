@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Game } from '../../models/game.model'
 import { Platform } from '../../models/platform.model'
 import { GamesService } from '../../services/games.service'
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-games-add',
@@ -10,9 +11,8 @@ import { GamesService } from '../../services/games.service'
 })
 export class GamesAddComponent implements OnInit {
 
-  platform: Platform[];
-  selectedPlatform: Platform;
-  game = new Game("","","","","");  
+  platforms: Platform[];
+  game: Game = new Game();  
 
   constructor(
     private gamesService: GamesService,    
@@ -28,11 +28,7 @@ export class GamesAddComponent implements OnInit {
   }
 
   getPlatforms() {
-    return this.platform = [
-      {name: 'PS4', code: 0},
-      {name: 'Nintendo', code: 1},
-      {name: 'XBOX', code: 2},
-    ];
+    return this.platforms = this.gamesService.getPlatformOptions();
   }
 }
 

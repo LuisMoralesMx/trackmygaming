@@ -17,6 +17,8 @@ import { GamesListComponent } from './components/games-list/games-list.component
 import { GamesAddComponent } from './components/games-add/games-add.component';
 import { GamesService } from './services/games.service';
 
+import {MatSelectModule} from '@angular/material/select';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,9 +31,10 @@ import { GamesService } from './services/games.service';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase), // imports firebase/app needed for everything
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
-    AngularFireDatabaseModule,
+    AngularFireDatabaseModule, // imports firebase/db, only needed for database features
     AngularFontAwesomeModule,
     BrowserAnimationsModule,
+    MatSelectModule,
   ],
   providers: [GamesService],
   bootstrap: [AppComponent]

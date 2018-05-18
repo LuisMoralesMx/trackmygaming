@@ -12,7 +12,6 @@ import { Observable } from 'rxjs';
 export class GamesListComponent implements OnInit {
 
   // Declaring component variables
-  platform = 'PS4';
   gamesList: Game[];
 
   constructor(
