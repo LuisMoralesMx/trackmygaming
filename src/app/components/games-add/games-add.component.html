@@ -21,8 +21,11 @@
     </div>
     <!-- Game Release Date -->
     <div class="form-group">
-      <label for="releasedateId">Release Date</label>
-      <input type="text" class="form-control" id="releasedateId" placeholder="MM/DD/YYYY" [(ngModel)]="game.releasedate" name="releasedate">
+      <mat-form-field>
+        <input matInput [matDatepicker]="releaseDate" placeholder="Release Date" [(ngModel)]="game.releasedate" name="releaseDate" >
+        <mat-datepicker-toggle matSuffix [for]="releaseDate"></mat-datepicker-toggle>
+        <mat-datepicker #releaseDate></mat-datepicker>
+      </mat-form-field>
     </div>
     <!-- Game Status -->
     <div class="form-group">
@@ -36,5 +39,6 @@
     <div class="form-group">
       <button type="button" class="btn btn-primary btn-sm" (click)="this.addNewGame()">Add Game</button>
     </div>
+
   </form>
 </div>

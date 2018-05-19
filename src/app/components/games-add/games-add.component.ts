@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl} from '@angular/forms';
 import { Game } from '../../models/game.model'
 import { Platform } from '../../models/platform.model'
 import { GamesService } from '../../services/games.service'
 import { stringify } from 'querystring';
 import { Status } from '../../models/status.model';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-games-add',
@@ -14,12 +16,12 @@ export class GamesAddComponent implements OnInit {
 
   platformsOptions: Platform[];
   statusOptions: Status[];
-  game: Game = new Game();  
+  game: Game = new Game();
 
   constructor(
-    private gamesService: GamesService,    
-    
-  ) { }
+    private gamesService: GamesService,
+    private router: Router 
+  ) {}
 
   ngOnInit() {
     this.getPlatformsOptions();
@@ -27,7 +29,8 @@ export class GamesAddComponent implements OnInit {
   }
 
   addNewGame() {
-    return this.gamesService.addNewGame(this.game);
+    return this.gamesService.addNewGame(this.game).then(
+      () => this.router.navigate(['/gameslist']));
   }
 
   getPlatformsOptions() {

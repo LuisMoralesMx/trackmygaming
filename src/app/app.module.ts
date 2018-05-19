@@ -10,14 +10,17 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
-import {AngularFontAwesomeModule } from 'angular-font-awesome';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { GamesListComponent } from './components/games-list/games-list.component';
 import { GamesAddComponent } from './components/games-add/games-add.component';
 import { GamesService } from './services/games.service';
 
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material';
+import { MatInputModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -35,8 +38,11 @@ import {MatSelectModule} from '@angular/material/select';
     AngularFontAwesomeModule,
     BrowserAnimationsModule,
     MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
   ],
-  providers: [GamesService],
+  providers: [GamesService, MatDatepickerModule],
   bootstrap: [AppComponent]
 })
 

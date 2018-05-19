@@ -12,11 +12,17 @@ export class GamesService {
   constructor(private db: AngularFireDatabase) { }
 
   getGameListByUserId(): Observable<Game[]>{
-    return this.db.list<Game>('/Games/R6vBhRITlaMF6aVDK4oUF3wXHXI3').valueChanges();
+    return this.db.list<Game>('/games/R6vBhRITlaMF6aVDK4oUF3wXHXI3').valueChanges();
   }
 
   addNewGame(game: Game) {
-    return this.db.list('/Games/R6vBhRITlaMF6aVDK4oUF3wXHXI3').push(game);
+    return this.db.list('/games/R6vBhRITlaMF6aVDK4oUF3wXHXI3').push(game).set({
+      title: game.title,
+      platform: game.platform,
+      status: game.status,
+      publisher: game.publisher,
+      releasedate: game.releasedate.getTime().toString(),
+    });
   }
 
   getPlatformOptions() {
