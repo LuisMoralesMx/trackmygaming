@@ -14,9 +14,9 @@
       <th>{{items.title}}</th>
       <td>{{items.platform}}</td>
       <td>{{items.publisher}}</td>
-      <td>{{items.releasedate}}</td>
+      <td>{{getDateFormat(items.releasedate)}}</td>
       <td>{{items.status}}</td>
-      <td><button type="button" class="btn btn-primary btn-sm" (click)="this.viewGameDetail()">Edit</button></td>
+      <td><button type="button" class="btn btn-primary btn-sm" (click)="this.viewGameDetail(items.$key)">Edit</button></td>
     </tr>
   </tbody>
 </table>

@@ -3,6 +3,8 @@ import { Game } from '../../models/game.model';
 import { GamesService } from '../../services/games.service'
 import { Observable } from 'rxjs';
 
+import * as moment from 'moment';
+
 @Component({
   selector: 'app-games-list',
   templateUrl: './games-list.component.html',
@@ -23,11 +25,16 @@ export class GamesListComponent implements OnInit {
   }
 
   getGameList() {
-    this.gamesService.getGameListByUserId().subscribe(games => this.gamesList = games);
+    this.gamesService.getGameListAndKeyByUserId().subscribe(games => this.gamesList = games);
   }
 
-  viewGameDetail() {
-    alert('Not coded yet.');
+  viewGameDetail(key) {
+    alert('Key: ' + key);
+  }
+
+  getDateFormat(milliseconds : string) {
+    let date = moment(milliseconds).format("MMM Do YY");
+    return date;
   }
 
 }
