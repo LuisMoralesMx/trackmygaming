@@ -16,7 +16,10 @@
       <td>{{items.publisher}}</td>
       <td>{{getDateFormat(items.releasedate)}}</td>
       <td>{{items.status}}</td>
-      <td><button type="button" class="btn btn-primary btn-sm" (click)="this.viewGameDetail(items.$key)">Edit</button></td>
+      <td>
+        <i class="fa fa-trash icon-format" aria-hidden="true"></i>
+        <i class="fa fa-pencil icon-format" aria-hidden="true" (click)="this.viewGameDetail(items.$key)"></i>
+      </td>
     </tr>
   </tbody>
 </table>

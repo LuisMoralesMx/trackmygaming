@@ -41,6 +41,10 @@ export class GamesService {
     });
   }
 
+  deleteGame(id: string) {
+    
+  }
+
   getPlatformOptions() {
     type platforms = Array<Platform>
     const options: platforms = [
