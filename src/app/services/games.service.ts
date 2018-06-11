@@ -42,7 +42,7 @@ export class GamesService {
   }
 
   deleteGame(id: string) {
-    
+    return this.db.database.ref().child("/games/R6vBhRITlaMF6aVDK4oUF3wXHXI3").child(id).remove();
   }
 
   getPlatformOptions() {

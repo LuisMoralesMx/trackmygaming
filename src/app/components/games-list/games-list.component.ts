@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Game } from '../../models/game.model';
 import { GamesService } from '../../services/games.service'
-import { Observable } from 'rxjs';
 
 import * as moment from 'moment';
 
@@ -28,8 +27,14 @@ export class GamesListComponent implements OnInit {
     this.gamesService.getGameListAndKeyByUserId().subscribe(games => this.gamesList = games);
   }
 
-  viewGameDetail(key) {
+  viewGameDetail(key: string) {
     alert('Key: ' + key);
+  }
+
+  deleteGame(key: string) {
+    this.gamesService.deleteGame(key).then(function(response) {
+      // Implement behavior.  
+    });
   }
 
   getDateFormat(milliseconds : string) {
