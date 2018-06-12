@@ -28,12 +28,23 @@ export class GamesListComponent implements OnInit {
   }
 
   viewGameDetail(key: string) {
-    alert('Key: ' + key);
+    let game = new Game();
+    let reference = this.gamesService.getGameDetails(key);
+
+    reference.once("value")
+      .then(function (snapshot) {
+        game.platform = snapshot.child("platform").val();
+        game.publisher = snapshot.child("publisher").val();
+        game.releasedate = snapshot.child("releasedate").val();
+        game.status = snapshot.child("status").val();
+        game.title = snapshot.child("title").val();
+    });
+
   }
 
   deleteGame(key: string) {
     this.gamesService.deleteGame(key).then(function(response) {
-      // Implement behavior.  
+      // Implement behavior.
     });
   }
 

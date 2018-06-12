@@ -37,8 +37,12 @@ export class GamesService {
       platform: game.platform,
       status: game.status,
       publisher: game.publisher,
-      releasedate: Date.parse(game.releasedate),
+      releasedate: Date.parse(game.releasedate.toString()),
     });
+  }
+
+  getGameDetails(id: string) {
+    return this.db.database.ref("/games/R6vBhRITlaMF6aVDK4oUF3wXHXI3" + "/" + id);
   }
 
   deleteGame(id: string) {
