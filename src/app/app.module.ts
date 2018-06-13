@@ -21,12 +21,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
+import { GamesViewDetailComponent } from './components/games-view-detail/games-view-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GamesListComponent,
-    GamesAddComponent
+    GamesAddComponent,
+    GamesViewDetailComponent
   ],
   imports: [
     BrowserModule,

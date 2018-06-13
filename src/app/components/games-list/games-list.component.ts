@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router'
 import { Game } from '../../models/game.model';
 import { GamesService } from '../../services/games.service'
 
@@ -16,6 +17,7 @@ export class GamesListComponent implements OnInit {
   gamesList: Game[];
 
   constructor(
+    private router : Router,
     private gamesService: GamesService
   ) { }
 
@@ -27,19 +29,8 @@ export class GamesListComponent implements OnInit {
     this.gamesService.getGameListAndKeyByUserId().subscribe(games => this.gamesList = games);
   }
 
-  viewGameDetail(key: string) {
-    let game = new Game();
-    let reference = this.gamesService.getGameDetails(key);
-
-    reference.once("value")
-      .then(function (snapshot) {
-        game.platform = snapshot.child("platform").val();
-        game.publisher = snapshot.child("publisher").val();
-        game.releasedate = snapshot.child("releasedate").val();
-        game.status = snapshot.child("status").val();
-        game.title = snapshot.child("title").val();
-    });
-
+  viewGameDetails(id: string) {
+    this.router.navigate(['/gamesview', id]);
   }
 
   deleteGame(key: string) {

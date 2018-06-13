@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl} from '@angular/forms';
 import { Game } from '../../models/game.model'
 import { Platform } from '../../models/platform.model'
 import { GamesService } from '../../services/games.service'
-import { stringify } from 'querystring';
 import { Status } from '../../models/status.model';
 import { Router } from "@angular/router";
 
