@@ -14,7 +14,7 @@ export class GamesViewDetailComponent implements OnInit {
   private id: string;
   private sub: any;
   
-  gameDetails: Game;
+  public gameDetails: Game;
 
   constructor(
     private route: ActivatedRoute,
@@ -37,14 +37,14 @@ export class GamesViewDetailComponent implements OnInit {
     let game = new Game();
     let data = from(this.gamesService.getGameDetails(gameKey));
 
-    data.subscribe({
-      next(response) {
-        game.platform = response.child("platform").val();
+    data.subscribe(response => {
+      game.platform = response.child("platform").val();
         game.publisher = response.child("publisher").val();
         game.releasedate = response.child("releasedate").val();
         game.status = response.child("status").val();
         game.title = response.child("title").val();
-      }
+
+        this.gameDetails = game;
     })
   }
 }

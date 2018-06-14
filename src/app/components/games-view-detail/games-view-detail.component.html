@@ -1,3 +1,21 @@
-<p>
-  games-view-detail works!
-</p>
+<table class="table games-list-table centered">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Platform</th>
+      <th scope="col">Publisher</th>
+      <th scope="col">Release Date</th>
+      <th scope="col">Status</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>{{gameDetails.title}}</th>
+      <td>{{gameDetails.platform}}</td>
+      <td>{{gameDetails.publisher}}</td>
+      <td>{{gameDetails.releasedate}}</td>
+      <td>{{gameDetails.status}}</td>
+    </tr>
+  </tbody>
+</table>
