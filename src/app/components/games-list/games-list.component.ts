@@ -29,8 +29,8 @@ export class GamesListComponent implements OnInit {
     this.gamesService.getGameListAndKeyByUserId().subscribe(games => this.gamesList = games);
   }
 
-  viewGameDetails(id: string) {
-    this.router.navigate(['/gamesview', id]);
+  updateGameDetails(id: string) {
+    this.router.navigate(['/gamesupdate', id]);
   }
 
   deleteGame(key: string) {

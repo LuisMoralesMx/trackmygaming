@@ -8,11 +8,11 @@ import { Platform } from '../../models/platform.model';
 import { Status } from '../../models/status.model';
 
 @Component({
-  selector: 'app-games-view-detail',
-  templateUrl: './games-view-detail.component.html',
-  styleUrls: ['./games-view-detail.component.scss']
+  selector: 'app-games-update-detail',
+  templateUrl: './games-update-detail.component.html',
+  styleUrls: ['./games-update-detail.component.scss']
 })
-export class GamesViewDetailComponent implements OnInit {
+export class GamesUpdateDetailComponent implements OnInit {
 
   private id: string;
   private paramRouting: any;
