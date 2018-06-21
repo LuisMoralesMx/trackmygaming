@@ -14,7 +14,7 @@
       <th>{{items.title}}</th>
       <td>{{items.platform}}</td>
       <td>{{items.publisher}}</td>
-      <td>{{getDateFormat(items.releasedate)}}</td>
+      <td>{{utilsService.getDateFormat(items.releasedate)}}</td>
       <td>{{items.status}}</td>
       <td>
         <i class="fa fa-trash icon-format" aria-hidden="true" (click)="this.deleteGame(items.$key)"></i>

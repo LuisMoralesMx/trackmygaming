@@ -6,5 +6,5 @@ export class Game {
     status: string;
     publisher: string;
     releasedate: string;
-
+    releasedateObject: Date;
 }

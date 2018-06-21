@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <-- NgModel lives here
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GamesListComponent } from './components/games-list/games-list.component';
 import { GamesAddComponent } from './components/games-add/games-add.component';
 import { GamesService } from './services/games.service';
+import { UtilsService } from './services/utils.service'
 
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -33,6 +34,7 @@ import { GamesViewDetailComponent } from './components/games-view-detail/games-v
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase), // imports firebase/app needed for everything
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
@@ -44,7 +46,7 @@ import { GamesViewDetailComponent } from './components/games-view-detail/games-v
     MatNativeDateModule,
     MatInputModule,
   ],
-  providers: [GamesService, MatDatepickerModule],
+  providers: [GamesService, UtilsService, MatDatepickerModule],
   bootstrap: [AppComponent]
 })
 

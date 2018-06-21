@@ -1,21 +1,47 @@
-<table class="table games-list-table centered">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Title</th>
-      <th scope="col">Platform</th>
-      <th scope="col">Publisher</th>
-      <th scope="col">Release Date</th>
-      <th scope="col">Status</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>{{gameDetails.title}}</th>
-      <td>{{gameDetails.platform}}</td>
-      <td>{{gameDetails.publisher}}</td>
-      <td>{{gameDetails.releasedate}}</td>
-      <td>{{gameDetails.status}}</td>
-    </tr>
-  </tbody>
-</table>
+<!-- Form Begins Here -->
+
+<div class="form-container">
+  <form>
+    <!-- Game Title -->
+    <div class="form-group">
+      <label for="titleId">Game</label>
+      <input type="text" class="form-control" id="titleId" [(ngModel)]="gameDetails.title" name="title"  disabled>
+      <small id="emailHelp" class="form-text text-muted">We will never judge what you actually play.. Well maybe.</small>
+    </div>
+    <!-- Game Platform -->
+    <div class="form-group">
+      <mat-form-field>
+        <mat-select [(value)]="gameDetails.platform" id="platformId" placeholder="Select Platform">
+          <mat-option *ngFor="let platform of platformsOptions" [value]="platform.name">{{platform.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <!-- Game Publisher -->
+    <div class="form-group">
+      <label for="publisherId">Publisher</label>
+      <input type="text" class="form-control" id="publisherId" placeholder="EA, Ubisoft, Microsoft Studios.." [(ngModel)]="gameDetails.publisher" name="publisher">
+    </div>
+    <!-- Game Release Date -->
+    <div class="form-group">
+      <mat-form-field>
+        <input matInput [matDatepicker]="releaseDate" placeholder="Release Date" [(ngModel)]="gameDetails.releasedateObject" name="releaseDate" >
+        <mat-datepicker-toggle matSuffix [for]="releaseDate"></mat-datepicker-toggle>
+        <mat-datepicker #releaseDate></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <!-- Game Status -->
+    <div class="form-group">
+      <mat-form-field>
+          <mat-select [(value)]="gameDetails.status" id="statusId" placeholder="Select Status">
+            <mat-option *ngFor="let status of statusOptions" [value]="status.name">{{status.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+    </div>
+    <!-- Form Action Buttons -->
+    <div class="form-group">
+      <button type="button" class="btn btn-primary btn-sm" (click)="this.updateGameDetails()">Update Game</button>
+    </div>
+  </form>
+</div>
+
+<!-- Form Ends Here -->

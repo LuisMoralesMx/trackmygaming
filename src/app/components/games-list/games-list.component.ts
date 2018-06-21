@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
 import { Game } from '../../models/game.model';
 import { GamesService } from '../../services/games.service'
-
-import * as moment from 'moment';
+import { UtilsService } from '../../services/utils.service'
 
 @Component({
   selector: 'app-games-list',
@@ -18,7 +17,8 @@ export class GamesListComponent implements OnInit {
 
   constructor(
     private router : Router,
-    private gamesService: GamesService
+    private gamesService: GamesService,
+    private utilsService: UtilsService // Used directly in the HTML.
   ) { }
 
   ngOnInit() {
@@ -38,10 +38,4 @@ export class GamesListComponent implements OnInit {
       // Implement behavior.
     });
   }
-
-  getDateFormat(milliseconds : string) {
-    let date = moment(milliseconds).format("MMM Do YY");
-    return date;
-  }
-
 }
