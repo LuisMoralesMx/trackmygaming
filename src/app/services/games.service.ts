@@ -31,6 +31,10 @@ export class GamesService {
     }));
   }
 
+  getGameDetails(id: string) {
+    return this.db.database.ref("/games/R6vBhRITlaMF6aVDK4oUF3wXHXI3" + "/" + id).once("value");
+  }
+
   addNewGame(game: Game) {
     return this.db.list('/games/R6vBhRITlaMF6aVDK4oUF3wXHXI3').push(game).set({
       title: game.title,
@@ -41,8 +45,14 @@ export class GamesService {
     });
   }
 
-  getGameDetails(id: string) {
-    return this.db.database.ref("/games/R6vBhRITlaMF6aVDK4oUF3wXHXI3" + "/" + id).once("value");
+  updateGameDetails(id: string, game: Game) {
+    return this.db.database.ref("/games/R6vBhRITlaMF6aVDK4oUF3wXHXI3" + "/" + id).update({
+      title: game.title,
+      platform: game.platform,
+      status: game.status,
+      publisher: game.publisher,
+      releasedate: Date.parse(game.releasedateObject.toString()),
+    });
   }
 
   deleteGame(id: string) {

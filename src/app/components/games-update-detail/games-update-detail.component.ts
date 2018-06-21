@@ -17,7 +17,7 @@ export class GamesUpdateDetailComponent implements OnInit {
   private id: string;
   private paramRouting: any;
   
-  public gameDetails: Game;
+  public gameDetails: Game = new Game();
   public platformsOptions: Platform[];
   public statusOptions: Status[];
 
@@ -57,7 +57,11 @@ export class GamesUpdateDetailComponent implements OnInit {
   }
 
   updateGameDetails() {
-    alert(JSON.stringify(this.gameDetails));
+    let update = from(this.gamesService.updateGameDetails(this.id, this.gameDetails));
+
+    update.subscribe(() => {
+      alert('Update has been performed.');
+    })
   }
 
   getPlatformsOptions() {
