@@ -10,7 +10,7 @@
     <!-- Game Title -->
     <div class="form-group">
       <label for="titleId">Game</label>
-      <input type="text" class="form-control" id="titleId" placeholder="Type Game" [(ngModel)]="game.title" name="title">
+      <input type="text" class="form-control" id="titleId" placeholder="Type Game" [(ngModel)]="game.title" name="title" >
       <small id="emailHelp" class="form-text text-muted">We will never judge what you actually play.. Well maybe.</small>
     </div>
     <!-- Game Platform -->
@@ -29,7 +29,7 @@
     <!-- Game Release Date -->
     <div class="form-group">
       <mat-form-field>
-        <input matInput [matDatepicker]="releaseDate" placeholder="Release Date" [(ngModel)]="game.releasedate" name="releaseDate" >
+        <input matInput [matDatepicker]="releaseDate" placeholder="Release Date" [(ngModel)]="game.releasedate" name="releaseDate" readonly >
         <mat-datepicker-toggle matSuffix [for]="releaseDate"></mat-datepicker-toggle>
         <mat-datepicker #releaseDate></mat-datepicker>
       </mat-form-field>

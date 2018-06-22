@@ -31,7 +31,7 @@
     <!-- Game Release Date -->
     <div class="form-group">
       <mat-form-field>
-        <input matInput [matDatepicker]="releaseDate" placeholder="Release Date" [(ngModel)]="gameDetails.releasedateObject" name="releaseDate" >
+        <input matInput [matDatepicker]="releaseDate" placeholder="Release Date" [(ngModel)]="gameDetails.releasedateObject" name="releaseDate" readonly >
         <mat-datepicker-toggle matSuffix [for]="releaseDate"></mat-datepicker-toggle>
         <mat-datepicker #releaseDate></mat-datepicker>
       </mat-form-field>
