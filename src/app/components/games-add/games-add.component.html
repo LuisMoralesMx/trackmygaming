@@ -44,7 +44,8 @@
     </div>
     <!-- Form Action Buttons -->
     <div class="form-group">
-      <button type="button" class="btn btn-primary btn-sm" [disabled]="disableSaveButton" (click)="this.addNewGame()">Add Game</button>
+      <button type="button" class="btn btn-primary btn-sm form-buttons" [disabled]="disableSaveButton" (click)="this.addNewGame()">Add Game</button>
+      <button type="button" class="btn btn-primary btn-sm form-buttons" routerLink="/gameslist">Cancel</button>
     </div>
   </form>
   <!-- Form Ends Here -->

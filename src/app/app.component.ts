@@ -9,9 +9,5 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent {  
   title = 'Game Tracking';
-
-  /*items: Observable<any[]>;
-  constructor(db: AngularFireDatabase) {
-    this.items = db.list('/Games/R6vBhRITlaMF6aVDK4oUF3wXHXI3').valueChanges();
-  }*/
+  
 }
