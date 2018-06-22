@@ -1,25 +1,37 @@
-<table class="table games-list-table centered">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Title</th>
-      <th scope="col">Platform</th>
-      <th scope="col">Publisher</th>
-      <th scope="col">Release Date</th>
-      <th scope="col">Status</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let items of gamesList">
-      <th>{{items.title}}</th>
-      <td>{{items.platform}}</td>
-      <td>{{items.publisher}}</td>
-      <td>{{utilsService.getDateFormat(items.releasedate)}}</td>
-      <td>{{items.status}}</td>
-      <td>
-        <i class="fa fa-trash icon-format" aria-hidden="true" (click)="this.deleteGame(items.$key)"></i>
-        <i class="fa fa-pencil icon-format" aria-hidden="true" (click)="this.updateGameDetails(items.$key)"></i>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<!-- Messages -->
+
+<div>
+  <div *ngIf="deleteSuccess" class="alert alert-success message-box-position" role="alert">
+      The game record has been <strong>successfully deleted</strong>!    
+      <button type="button" class="close" aria-label="Close" (click)="this.closeDeleteAlert()" >
+          <span aria-hidden="true">&times;</span>
+        </button>
+  </div>
+  <div>
+    <table class="table games-list-table centered">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Platform</th>
+          <th scope="col">Publisher</th>
+          <th scope="col">Release Date</th>
+          <th scope="col">Status</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let items of gamesList">
+          <th>{{items.title}}</th>
+          <td>{{items.platform}}</td>
+          <td>{{items.publisher}}</td>
+          <td>{{utilsService.getDateFormat(items.releasedate)}}</td>
+          <td>{{items.status}}</td>
+          <td>
+            <i class="fa fa-trash icon-format" aria-hidden="true" (click)="this.deleteGame(items.$key)"></i>
+            <i class="fa fa-pencil icon-format" aria-hidden="true" (click)="this.updateGameDetails(items.$key)"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { from } from 'rxjs';
 import { Game } from '../../models/game.model';
 import { GamesService } from '../../services/games.service'
@@ -21,14 +21,18 @@ export class GamesUpdateDetailComponent implements OnInit {
   public platformsOptions: Platform[];
   public statusOptions: Status[];
 
+  public updateSuccess: boolean = false;
+  public disableUpdateButton: boolean = false;
+
   constructor(
-    private route: ActivatedRoute,
+    private activeRoute: ActivatedRoute,
+    private router: Router,
     private gamesService: GamesService,
     private utilsService: UtilsService
   ) { }
 
   ngOnInit() {
-    this.paramRouting = this.route.params.subscribe(params => {
+    this.paramRouting = this.activeRoute.params.subscribe(params => {
       this.id = params['id'];
       this.viewGameDetail(this.id);
       this.getPlatformsOptions();
@@ -60,7 +64,12 @@ export class GamesUpdateDetailComponent implements OnInit {
     let update = from(this.gamesService.updateGameDetails(this.id, this.gameDetails));
 
     update.subscribe(() => {
-      alert('Update has been performed.');
+      this.updateSuccess = true;
+      this.disableUpdateButton = true;
+
+      setTimeout(() => {
+        this.router.navigate(['/gameslist']);
+      }, 2000)
     })
   }
 

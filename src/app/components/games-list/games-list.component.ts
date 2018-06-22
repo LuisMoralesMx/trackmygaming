@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
+import { from } from 'rxjs';
 import { Game } from '../../models/game.model';
 import { GamesService } from '../../services/games.service'
 import { UtilsService } from '../../services/utils.service'
@@ -14,6 +15,8 @@ export class GamesListComponent implements OnInit {
 
   // Declaring component variables
   gamesList: Game[];
+
+  public deleteSuccess: boolean = false;
 
   constructor(
     private router : Router,
@@ -34,8 +37,14 @@ export class GamesListComponent implements OnInit {
   }
 
   deleteGame(key: string) {
-    this.gamesService.deleteGame(key).then(function(response) {
-      // Implement behavior.
-    });
+    let del = from(this.gamesService.deleteGame(key));
+
+    del.subscribe(() => {
+      this.deleteSuccess = true;
+    })
+  }
+
+  closeDeleteAlert() {
+    this.deleteSuccess = false;
   }
 }

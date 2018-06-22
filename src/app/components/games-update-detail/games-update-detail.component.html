@@ -1,6 +1,13 @@
 <!-- Form Begins Here -->
 
 <div class="form-container">
+
+  <!-- Messages -->
+  <div *ngIf="updateSuccess" class="alert alert-success" role="alert">
+    The game details have been <strong>successfully updated</strong>!    
+  </div>
+
+  <!-- Form Begins Here -->
   <form>
     <!-- Game Title -->
     <div class="form-group">
@@ -39,9 +46,8 @@
     </div>
     <!-- Form Action Buttons -->
     <div class="form-group">
-      <button type="button" class="btn btn-primary btn-sm" (click)="this.updateGameDetails()">Update Game</button>
+      <button type="button" class="btn btn-primary btn-sm" [disabled]="disableUpdateButton" (click)="this.updateGameDetails()">Update Game</button>
     </div>
   </form>
+  <!-- Form Ends Here -->
 </div>
-
-<!-- Form Ends Here -->

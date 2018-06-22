@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
+import { from } from 'rxjs';
 import { Game } from '../../models/game.model'
 import { Platform } from '../../models/platform.model'
 import { GamesService } from '../../services/games.service'
 import { Status } from '../../models/status.model';
-import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-games-add',
@@ -12,9 +13,12 @@ import { Router } from "@angular/router";
 })
 export class GamesAddComponent implements OnInit {
 
-  platformsOptions: Platform[];
-  statusOptions: Status[];
-  game: Game = new Game();
+  public platformsOptions: Platform[];
+  public statusOptions: Status[];
+  public game: Game = new Game();
+  
+  public addSuccess: boolean = false;
+  public disableSaveButton: boolean = false;
 
   constructor(
     private gamesService: GamesService,
@@ -27,8 +31,18 @@ export class GamesAddComponent implements OnInit {
   }
 
   addNewGame() {
-    return this.gamesService.addNewGame(this.game).then(
-      () => this.router.navigate(['/gameslist']));
+
+    let addGame = from(this.gamesService.addNewGame(this.game));
+
+    addGame.subscribe(() => {
+      this.disableSaveButton = true;
+      this.addSuccess = true;
+      
+      setTimeout(() => {
+        this.router.navigate(['/gameslist']);
+      }, 2000)
+
+    })
   }
 
   getPlatformsOptions() {
