@@ -1,12 +1,9 @@
-<!-- Messages -->
-
 <div>
-  <div *ngIf="deleteSuccess" class="alert alert-success message-box-position" role="alert">
-      The game record has been <strong>successfully deleted</strong>!    
-      <button type="button" class="close" aria-label="Close" (click)="this.closeDeleteAlert()" >
-          <span aria-hidden="true">&times;</span>
-        </button>
+  <!-- Alerts -->  
+  <div *ngIf="deleteSuccess" class="alert alert-danger message-box-position" role="alert">
+      The game record has been <strong>successfully deleted</strong>!
   </div>
+  <!-- Gaming List -->
   <div>
     <table class="table games-list-table centered">
       <thead class="thead-dark">

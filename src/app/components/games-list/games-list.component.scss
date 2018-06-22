@@ -1,3 +1,19 @@
+table.games-list-table {
+    width: 60%;
+  }
+  
+table.games-list-table tr {
+    background-color: white;
+}
+  
+table.games-list-table tr:hover {
+    background-color: lightgray;
+}
+  
+.centered {
+    margin: 0 auto;
+}
+
 .icon-format {
     cursor: pointer;
     padding-right: 10px;

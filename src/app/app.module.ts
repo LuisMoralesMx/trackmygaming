@@ -23,13 +23,15 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
 import { GamesUpdateDetailComponent } from './components/games-update-detail/games-update-detail.component';
+import { GamesWelcomeComponent } from './components/games-welcome/games-welcome.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GamesListComponent,
     GamesAddComponent,
-    GamesUpdateDetailComponent
+    GamesUpdateDetailComponent,
+    GamesWelcomeComponent
   ],
   imports: [
     BrowserModule,

@@ -40,7 +40,7 @@ export class GamesAddComponent implements OnInit {
       
       setTimeout(() => {
         this.router.navigate(['/gameslist']);
-      }, 2000)
+      }, 3000)
 
     })
   }

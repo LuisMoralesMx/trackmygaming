@@ -41,10 +41,11 @@ export class GamesListComponent implements OnInit {
 
     del.subscribe(() => {
       this.deleteSuccess = true;
-    })
-  }
 
-  closeDeleteAlert() {
-    this.deleteSuccess = false;
+      setTimeout(() => {
+        this.deleteSuccess = false;
+      }, 3000);
+
+    })
   }
 }

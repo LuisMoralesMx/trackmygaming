@@ -4,22 +4,8 @@
 @import "../node_modules/font-awesome/scss/font-awesome";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+// Global CSS attributes across components.
+
 body {
   padding-top: 5rem;
-}
-
-table.games-list-table {
-  width: 60%;
-}
-
-table.games-list-table tr {
-  background-color: white;
-}
-
-table.games-list-table tr:hover {
-  background-color: lightgray;
-}
-
-.centered {
-  margin: 0 auto;
 }
