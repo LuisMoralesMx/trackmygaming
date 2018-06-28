@@ -12,5 +12,8 @@ export const environment = {
     projectId: 'track-my-gaming-mx',
     storageBucket: 'track-my-gaming-mx.appspot.com',
     messagingSenderId: '807332739044'
+  },
+  appSettings: {
+    redirectDelay: 3000,
   }
 };

@@ -5,6 +5,7 @@ import { Game } from '../../models/game.model'
 import { Platform } from '../../models/platform.model'
 import { GamesService } from '../../services/games.service'
 import { Status } from '../../models/status.model';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-games-add',
@@ -22,7 +23,7 @@ export class GamesAddComponent implements OnInit {
 
   constructor(
     private gamesService: GamesService,
-    private router: Router 
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -40,7 +41,7 @@ export class GamesAddComponent implements OnInit {
       
       setTimeout(() => {
         this.router.navigate(['/gameslist']);
-      }, 3000)
+      }, environment.appSettings.redirectDelay)
 
     })
   }

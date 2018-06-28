@@ -4,6 +4,7 @@ import { from } from 'rxjs';
 import { Game } from '../../models/game.model';
 import { GamesService } from '../../services/games.service'
 import { UtilsService } from '../../services/utils.service'
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-games-list',
@@ -44,7 +45,7 @@ export class GamesListComponent implements OnInit {
 
       setTimeout(() => {
         this.deleteSuccess = false;
-      }, 3000);
+      }, environment.appSettings.redirectDelay);
 
     })
   }

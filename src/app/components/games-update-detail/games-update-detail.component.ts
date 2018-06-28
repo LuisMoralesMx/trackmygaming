@@ -6,6 +6,7 @@ import { GamesService } from '../../services/games.service'
 import { UtilsService } from '../../services/utils.service'
 import { Platform } from '../../models/platform.model';
 import { Status } from '../../models/status.model';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-games-update-detail',
@@ -69,7 +70,7 @@ export class GamesUpdateDetailComponent implements OnInit {
 
       setTimeout(() => {
         this.router.navigate(['/gameslist']);
-      }, 3000)
+      }, environment.appSettings.redirectDelay)
     });
   }
 
