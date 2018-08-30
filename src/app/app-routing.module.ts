@@ -6,7 +6,6 @@ import { GamesUpdateDetailComponent } from './components/games-update-detail/gam
 import { GamesWelcomeComponent } from './components/games-welcome/games-welcome.component'
 
 const routes: Routes = [
-  //{ path: '', redirectTo: 'AppComponent', pathMatch: 'full' },
   { path: '', redirectTo: 'gameswelcome', pathMatch: 'full' },
   { path: 'gameslist', component: GamesListComponent },
   { path: 'gamesadd', component: GamesAddComponent },

@@ -54,4 +54,3 @@ export class GamesAddComponent implements OnInit {
     return  this.statusOptions = this.gamesService.getStatusOptions();
   }
 }
-

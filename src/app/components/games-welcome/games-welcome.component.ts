@@ -8,8 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class GamesWelcomeComponent implements OnInit {
 
   constructor() { }
-
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }
