@@ -17,7 +17,7 @@ export class AppComponent {
     this.authService.authState.subscribe((user) => {
       if(user.uid) {
         this.router.navigate(["/gameswelcome"]);
-        this.isLogIn = true;
+        this.isLogIn = true; // Not used at this point.
       }
     })
   }
