@@ -31,7 +31,7 @@ import { GamesWelcomeComponent } from './components/games-welcome/games-welcome.
     GamesListComponent,
     GamesAddComponent,
     GamesUpdateDetailComponent,
-    GamesWelcomeComponent
+    GamesWelcomeComponent    
   ],
   imports: [
     BrowserModule,
