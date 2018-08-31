@@ -17,8 +17,8 @@ export class GamesService {
     return this.db.list<Game>('/games/R6vBhRITlaMF6aVDK4oUF3wXHXI3').valueChanges();
   }
   
-  getGameListAndKeyByUserId(): Observable<any[]>{
-    return this.db.list<Game>('/games/R6vBhRITlaMF6aVDK4oUF3wXHXI3').snapshotChanges()
+  getGameListAndKeyByUserId(userId: string): Observable<any[]>{
+    return this.db.list<Game>('/games/' + userId).snapshotChanges()
     .pipe(map(results => {
       return results.map(item => {
         const $key = item.payload.key;
@@ -31,12 +31,12 @@ export class GamesService {
     }));
   }
 
-  getGameDetails(id: string) {
-    return this.db.database.ref("/games/R6vBhRITlaMF6aVDK4oUF3wXHXI3" + "/" + id).once("value");
+  getGameDetails(gameKey: string, userId: string) {
+    return this.db.database.ref("/games/" + userId + "/" + gameKey).once("value");
   }
 
-  addNewGame(game: Game) {
-    return this.db.list('/games/R6vBhRITlaMF6aVDK4oUF3wXHXI3').push(game).set({
+  addNewGame(game: Game, userId: string) {
+    return this.db.list('/games/' + userId).push(game).set({
       title: game.title,
       platform: game.platform,
       status: game.status,
@@ -45,8 +45,8 @@ export class GamesService {
     });
   }
 
-  updateGameDetails(id: string, game: Game) {
-    return this.db.database.ref("/games/R6vBhRITlaMF6aVDK4oUF3wXHXI3" + "/" + id).update({
+  updateGameDetails(gameKey: string, game: Game, userId: string) {
+    return this.db.database.ref("/games/" + userId + "/" + gameKey).update({
       title: game.title,
       platform: game.platform,
       status: game.status,
@@ -55,8 +55,8 @@ export class GamesService {
     });
   }
 
-  deleteGame(id: string) {
-    return this.db.database.ref().child("/games/R6vBhRITlaMF6aVDK4oUF3wXHXI3").child(id).remove();
+  deleteGame(gameKey: string, userId: string) {
+    return this.db.database.ref().child("/games/" + userId).child(gameKey).remove();
   }
 
   getPlatformOptions() {

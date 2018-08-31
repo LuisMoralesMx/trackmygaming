@@ -4,6 +4,7 @@ import { from } from 'rxjs';
 import { Game } from '../../models/game.model'
 import { Platform } from '../../models/platform.model'
 import { GamesService } from '../../services/games.service'
+import { AuthService } from '../../services/auth.service';
 import { Status } from '../../models/status.model';
 import { environment } from '../../../environments/environment';
 
@@ -23,6 +24,7 @@ export class GamesAddComponent implements OnInit {
 
   constructor(
     private gamesService: GamesService,
+    private authService: AuthService,
     private router: Router,
   ) {}
 
@@ -32,8 +34,8 @@ export class GamesAddComponent implements OnInit {
   }
 
   addNewGame() {
-
-    let addGame = from(this.gamesService.addNewGame(this.game));
+    let userId = this.authService.userCredentials.id;
+    let addGame = from(this.gamesService.addNewGame(this.game, userId));
 
     addGame.subscribe(() => {
       this.disableSaveButton = true;

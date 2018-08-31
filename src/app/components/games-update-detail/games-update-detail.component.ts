@@ -4,6 +4,7 @@ import { from } from 'rxjs';
 import { Game } from '../../models/game.model';
 import { GamesService } from '../../services/games.service'
 import { UtilsService } from '../../services/utils.service'
+import { AuthService } from '../../services/auth.service';
 import { Platform } from '../../models/platform.model';
 import { Status } from '../../models/status.model';
 import { environment } from '../../../environments/environment';
@@ -29,7 +30,8 @@ export class GamesUpdateDetailComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private router: Router,
     private gamesService: GamesService,
-    private utilsService: UtilsService
+    private utilsService: UtilsService,
+    private authService: AuthService,
   ) { }
 
   ngOnInit() {
@@ -47,7 +49,8 @@ export class GamesUpdateDetailComponent implements OnInit {
 
   viewGameDetail(gameKey: string) {
     let game = new Game();
-    let data = from(this.gamesService.getGameDetails(gameKey));
+    let userId = this.authService.userCredentials.id;
+    let data = from(this.gamesService.getGameDetails(gameKey, userId));
 
     data.subscribe(response => {
       game.platform = response.child("platform").val();
@@ -62,7 +65,8 @@ export class GamesUpdateDetailComponent implements OnInit {
   }
 
   updateGameDetails() {
-    let update = from(this.gamesService.updateGameDetails(this.id, this.gameDetails));
+    let userId = this.authService.userCredentials.id;
+    let update = from(this.gamesService.updateGameDetails(this.id, this.gameDetails, userId));
 
     update.subscribe(() => {
       this.updateSuccess = true;

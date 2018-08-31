@@ -4,6 +4,7 @@ import { from } from 'rxjs';
 import { Game } from '../../models/game.model';
 import { GamesService } from '../../services/games.service'
 import { UtilsService } from '../../services/utils.service'
+import { AuthService } from '../../services/auth.service';
 import { environment } from '../../../environments/environment';
 
 @Component({
@@ -22,6 +23,7 @@ export class GamesListComponent implements OnInit {
   constructor(
     private router : Router,
     private gamesService: GamesService,
+    private authService: AuthService,
     private utilsService: UtilsService // Used directly in the HTML.
   ) { }
 
@@ -30,15 +32,17 @@ export class GamesListComponent implements OnInit {
   }
 
   getGameList() {
-    this.gamesService.getGameListAndKeyByUserId().subscribe(games => this.gamesList = games);
+    let userId = this.authService.userCredentials.id;
+    this.gamesService.getGameListAndKeyByUserId(userId).subscribe(games => this.gamesList = games);
   }
 
   updateGameDetails(id: string) {
     this.router.navigate(['/gamesupdate', id]);
   }
 
-  deleteGame(key: string) {
-    let del = from(this.gamesService.deleteGame(key));
+  deleteGame(gameKey: string) {
+    let userId = this.authService.userCredentials.id;
+    let del = from(this.gamesService.deleteGame(gameKey, userId));
 
     del.subscribe(() => {
       this.deleteSuccess = true;
