@@ -10,6 +10,7 @@ import { AuthService } from './services/auth.service';
 export class AppComponent {  
   title = 'Game Tracking';
   isLogIn: boolean = false;
+  displayName: string = "";
 
   constructor(private authService: AuthService, private router: Router,) { }
 
@@ -17,7 +18,8 @@ export class AppComponent {
     this.authService.authState.subscribe((user) => {
       if(user.uid) {
         this.router.navigate(["/gameswelcome"]);
-        this.isLogIn = true; // Not used at this point.
+        this.displayName = user.displayName;
+        this.isLogIn = true;
       }
     })
   }
