@@ -2,13 +2,25 @@
     text-decoration: underline;
 }
 
-.google-sign-in-image {
+.sign-in-button-position {
     cursor: pointer;
     margin-left: 73%;
 }
 
-.google-logged-out {
+.sign-out-button-position {
     color: white;
     margin-left: 80%;
     cursor: pointer;
+}
+
+.google-sign-in-button {
+    background-image: url('../assets/google/btn_google_signin_dark_normal_web.png');
+    width: 191px;
+    height: 46px;
+}
+  
+.google-sign-in-button:hover {
+    background-image: url('../assets/google/btn_google_signin_dark_pressed_web.png');
+    width: 191px;
+    height: 46px;
 }
