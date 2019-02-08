@@ -23,3 +23,10 @@ table.games-list-table tr:hover {
     margin-left: 20%;
     margin-right: 20%;
 }
+
+.message-no-games-found {
+    text-align: center;
+    text-decoration: underline;
+    font-weight: lighter;
+    margin-top: 2%;
+}

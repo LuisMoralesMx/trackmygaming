@@ -18,7 +18,7 @@ export class GamesAddComponent implements OnInit {
   public platformsOptions: Platform[];
   public statusOptions: Status[];
   public game: Game = new Game();
-  
+
   public addSuccess: boolean = false;
   public disableSaveButton: boolean = false;
 
@@ -26,7 +26,7 @@ export class GamesAddComponent implements OnInit {
     private gamesService: GamesService,
     private authService: AuthService,
     private router: Router,
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.getPlatformsOptions();
@@ -40,7 +40,7 @@ export class GamesAddComponent implements OnInit {
     addGame.subscribe(() => {
       this.disableSaveButton = true;
       this.addSuccess = true;
-      
+
       setTimeout(() => {
         this.router.navigate(['/gameslist']);
       }, environment.appSettings.redirectDelay)
@@ -53,6 +53,6 @@ export class GamesAddComponent implements OnInit {
   }
 
   getStatusOptions() {
-    return  this.statusOptions = this.gamesService.getStatusOptions();
+    return this.statusOptions = this.gamesService.getStatusOptions();
   }
 }

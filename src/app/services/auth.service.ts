@@ -14,26 +14,32 @@ export class AuthService {
   authState: Observable<any> = null;
 
   constructor(
-    private fireBaseAuth: AngularFireAuth,    
-  ) { 
+    private fireBaseAuth: AngularFireAuth,
+  ) {
     this.authState = fireBaseAuth.authState;
-    this.authState.subscribe((response) => {
-        this.userCredentials.id = response.uid;
-        this.userCredentials.email = response.email;
-        this.userCredentials.fullName = response.displayName;   
-    })
+    this.authState.subscribe(
+      (response) => {
+        if (response) {
+          this.userCredentials.id = response.uid;
+          this.userCredentials.email = response.email;
+          this.userCredentials.fullName = response.displayName;
+        }
+      },
+
+      (error) => {
+        console.log('An exception has ocurred. ' + error);
+      })
   }
 
-  doGoogleLogIn(): void {
-    this.fireBaseAuth
-      .auth
-      .signInWithPopup(new firebase.auth.GoogleAuthProvider())    
-      .catch(error => {
-        console.log('Oops! Something went wrong!', error.message);
-      })      
+  doGoogleLogIn() {
+    return this.fireBaseAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
 
-  doLogOut() {
-    this.fireBaseAuth.auth.signOut();
+  doGoogleLogOut() {
+    this.userCredentials.id = null;
+    this.userCredentials.email = null;
+    this.userCredentials.fullName = null;
+
+    return this.fireBaseAuth.auth.signOut();
   }
 }

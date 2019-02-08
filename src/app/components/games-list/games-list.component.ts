@@ -21,7 +21,7 @@ export class GamesListComponent implements OnInit {
   public deleteSuccess: boolean = false;
 
   constructor(
-    private router : Router,
+    private router: Router,
     private gamesService: GamesService,
     private authService: AuthService,
     private utilsService: UtilsService // Used directly in the HTML.
@@ -33,7 +33,10 @@ export class GamesListComponent implements OnInit {
 
   getGameList() {
     let userId = this.authService.userCredentials.id;
-    this.gamesService.getGameListAndKeyByUserId(userId).subscribe(games => this.gamesList = games);
+
+    if (userId) {
+      this.gamesService.getGameListAndKeyByUserId(userId).subscribe(games => this.gamesList = games);
+    }
   }
 
   updateGameDetails(id: string) {

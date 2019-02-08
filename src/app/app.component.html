@@ -4,7 +4,7 @@
   <a class="navbar-brand underline-on-hover" routerLink="/gameslist">My Games</a>
   <a class="navbar-brand underline-on-hover" routerLink="/gamesadd">Add Games</a>  
   
-  <img *ngIf="!isLogIn" class="google-sign-in-image" src="../assets/google/btn_google_signin_light_normal_web.png" (click)="doSignIn()" />
-  <span *ngIf="isLogIn" class="google-logged-in text-underline">You are now logged in!</span>
+  <img *ngIf="!isLogIn" class="google-sign-in-image" src="../assets/google/btn_google_signin_dark_normal_web.png" (click)="doSignIn()" />
+  <span *ngIf="isLogIn" class="google-logged-out text-underline" (click)="doSignOut()" >Log out!</span>
 </nav>
 <router-outlet></router-outlet>

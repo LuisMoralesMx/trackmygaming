@@ -1,7 +1,7 @@
 <div>
-  <!-- Alerts -->  
+  <!-- Alerts -->
   <div *ngIf="deleteSuccess" class="alert alert-danger message-box-position" role="alert">
-      The game record has been <strong>successfully deleted</strong>!
+    The game record has been <strong>successfully deleted</strong>!
   </div>
   <!-- Gaming List -->
   <div>
@@ -31,4 +31,6 @@
       </tbody>
     </table>
   </div>
+
+  <div *ngIf="!gamesList" class="message-no-games-found">No game entries found.</div>
 </div>
