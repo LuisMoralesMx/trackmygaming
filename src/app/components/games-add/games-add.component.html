@@ -5,48 +5,56 @@
     The game has been <strong>successfully added</strong>!    
   </div>
 
+  <!--User needs to log in -->
+  <div *ngIf="!userId" class="alert alert-warning welcome-message-box" role="alert">
+    <h4 class="alert-heading">You need to log in first.</h4>
+    <p>You need to log in with your Google credentials in order to use this website.</p>
+  </div>
+
   <!-- Form Begins Here -->
-  <form>
-    <!-- Game Title -->
-    <div class="form-group">
-      <label for="titleId">Game</label>
-      <input type="text" class="form-control" id="titleId" placeholder="Type Game" [(ngModel)]="game.title" name="title" >
-      <small id="emailHelp" class="form-text text-muted">We will never judge what you actually play.. Well maybe.</small>
-    </div>
-    <!-- Game Platform -->
-    <div class="form-group">
-      <mat-form-field>
-        <mat-select [(value)]="game.platform" id="platformId" placeholder="Select Platform">
-          <mat-option *ngFor="let platform of platformsOptions" [value]="platform.name">{{platform.name}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <!-- Game Publisher -->
-    <div class="form-group">
-      <label for="publisherId">Publisher</label>
-      <input type="text" class="form-control" id="publisherId" placeholder="EA, Ubisoft, Microsoft Studios.." [(ngModel)]="game.publisher" name="publisher">
-    </div>
-    <!-- Game Release Date -->
-    <div class="form-group">
-      <mat-form-field>
-        <input matInput [matDatepicker]="releaseDate" placeholder="Release Date" [(ngModel)]="game.releasedate" name="releaseDate" readonly >
-        <mat-datepicker-toggle matSuffix [for]="releaseDate"></mat-datepicker-toggle>
-        <mat-datepicker #releaseDate></mat-datepicker>
-      </mat-form-field>
-    </div>
-    <!-- Game Status -->
-    <div class="form-group">
-      <mat-form-field>
-          <mat-select [(value)]="game.status" id="statusId" placeholder="Select Status">
-            <mat-option *ngFor="let status of statusOptions" [value]="status.name">{{status.name}}</mat-option>
+  <div *ngIf="userId">
+    <form>
+      <!-- Game Title -->
+      <div class="form-group">
+        <label for="titleId">Game</label>
+        <input type="text" class="form-control" id="titleId" placeholder="Type Game" [(ngModel)]="game.title" name="title" >
+        <small id="emailHelp" class="form-text text-muted">We will never judge what you actually play.. Well maybe.</small>
+      </div>
+      <!-- Game Platform -->
+      <div class="form-group">
+        <mat-form-field>
+          <mat-select [(value)]="game.platform" id="platformId" placeholder="Select Platform">
+            <mat-option *ngFor="let platform of platformsOptions" [value]="platform.name">{{platform.name}}</mat-option>
           </mat-select>
         </mat-form-field>
-    </div>
-    <!-- Form Action Buttons -->
-    <div class="form-group">
-      <button type="button" class="btn btn-primary btn-sm form-buttons" [disabled]="disableSaveButton" (click)="this.addNewGame()">Add Game</button>
-      <button type="button" class="btn btn-primary btn-sm form-buttons" routerLink="/gameslist">Cancel</button>
-    </div>
-  </form>
-  <!-- Form Ends Here -->
+      </div>
+      <!-- Game Publisher -->
+      <div class="form-group">
+        <label for="publisherId">Publisher</label>
+        <input type="text" class="form-control" id="publisherId" placeholder="EA, Ubisoft, Microsoft Studios.." [(ngModel)]="game.publisher" name="publisher">
+      </div>
+      <!-- Game Release Date -->
+      <div class="form-group">
+        <mat-form-field>
+          <input matInput [matDatepicker]="releaseDate" placeholder="Release Date" [(ngModel)]="game.releasedate" name="releaseDate" readonly >
+          <mat-datepicker-toggle matSuffix [for]="releaseDate"></mat-datepicker-toggle>
+          <mat-datepicker #releaseDate></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <!-- Game Status -->
+      <div class="form-group">
+        <mat-form-field>
+            <mat-select [(value)]="game.status" id="statusId" placeholder="Select Status">
+              <mat-option *ngFor="let status of statusOptions" [value]="status.name">{{status.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+      </div>
+      <!-- Form Action Buttons -->
+      <div class="form-group">
+        <button type="button" class="btn btn-primary btn-sm form-buttons" [disabled]="disableSaveButton" (click)="this.addNewGame()">Add Game</button>
+        <button type="button" class="btn btn-primary btn-sm form-buttons" routerLink="/gameslist">Cancel</button>
+      </div>
+    </form>
+    <!-- Form Ends Here -->
+  </div>
 </div>

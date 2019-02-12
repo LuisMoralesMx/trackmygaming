@@ -6,12 +6,12 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: 'AIzaSyCd1rOgXMw9BAhWbWQInd8uDGi48lYfREI',
-    authDomain: 'track-my-gaming-mx.firebaseapp.com',
-    databaseURL: 'https://track-my-gaming-mx.firebaseio.com',
-    projectId: 'track-my-gaming-mx',
-    storageBucket: 'track-my-gaming-mx.appspot.com',
-    messagingSenderId: '807332739044'
+    apiKey: '',
+    authDomain: '',
+    databaseURL: '',
+    projectId: '',
+    storageBucket: '',
+    messagingSenderId: ''
   },
   appSettings: {
     redirectDelay: 3000,

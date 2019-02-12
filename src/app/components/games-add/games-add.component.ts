@@ -15,6 +15,7 @@ import { environment } from '../../../environments/environment';
 })
 export class GamesAddComponent implements OnInit {
 
+  public userId: string;
   public platformsOptions: Platform[];
   public statusOptions: Status[];
   public game: Game = new Game();
@@ -29,23 +30,25 @@ export class GamesAddComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.userId = this.authService.userCredentials.id;
     this.getPlatformsOptions();
     this.getStatusOptions();
   }
 
   addNewGame() {
-    let userId = this.authService.userCredentials.id;
-    let addGame = from(this.gamesService.addNewGame(this.game, userId));
+    if (this.userId) {
+      let addGame = from(this.gamesService.addNewGame(this.game, this.userId));
 
-    addGame.subscribe(() => {
-      this.disableSaveButton = true;
-      this.addSuccess = true;
+      addGame.subscribe(() => {
+        this.disableSaveButton = true;
+        this.addSuccess = true;
 
-      setTimeout(() => {
-        this.router.navigate(['/gameslist']);
-      }, environment.appSettings.redirectDelay)
+        setTimeout(() => {
+          this.router.navigate(['/gameslist']);
+        }, environment.appSettings.redirectDelay)
 
-    })
+      });
+    }
   }
 
   getPlatformsOptions() {
